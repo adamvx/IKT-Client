@@ -10,11 +10,10 @@ public class Note extends BaseObject {
     private String message;
     private String token;
 
-    public Note(ResultSet rs) throws SQLException {
-        id = rs.getInt("id");
-        userId = rs.getInt("user_id");
-        heading = rs.getString("title");
-        message = rs.getString("note");
+    public Note(String heading, String message, String token) {
+        this.heading = heading;
+        this.message = message;
+        this.token = token;
     }
 
     public int getId() {

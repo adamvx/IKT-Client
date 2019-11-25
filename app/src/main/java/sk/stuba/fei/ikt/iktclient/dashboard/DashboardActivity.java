@@ -1,5 +1,6 @@
 package sk.stuba.fei.ikt.iktclient.dashboard;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +18,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import sk.stuba.fei.ikt.iktclient.add_note.AddNoteActivity;
 import sk.stuba.fei.ikt.iktclient.api.RetroClient;
 import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.R;
@@ -25,6 +28,7 @@ import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
 public class DashboardActivity extends BaseActivity implements DashboardAdapter.DashboardHandler {
 
     private static final String TOKEN_CODE = "TOKEN_CODE";
+    private static final int ADD_NOTE_REQUEST_CODE = 1;
     private String token;
 
     private RecyclerView rv;
@@ -47,6 +51,7 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
         int id = item.getItemId();
 
         if (id == R.id.action_add) {
+            startActivityForResult(AddNoteActivity.getIntent(this, token), ADD_NOTE_REQUEST_CODE);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -70,6 +75,11 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
 
+        requestNotes();
+
+    }
+
+    private void requestNotes() {
         RetroClient.getApiService().getNotes(new ServerResponse(token)).enqueue(new Callback<List<Note>>() {
             @Override
             public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
@@ -83,7 +93,14 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
                 Log.e("TAG", "IC DO PICI");
             }
         });
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ADD_NOTE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            requestNotes();
+        }
     }
 
     @Override

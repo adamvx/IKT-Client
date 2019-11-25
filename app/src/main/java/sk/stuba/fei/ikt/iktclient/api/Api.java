@@ -23,4 +23,7 @@ public interface Api {
 
     @POST("delete")
     Call<List<Note>> deleteNote(@Body Note note);
+
+    @POST("create")
+    Call<List<Note>> createNote(@Body Note note);
 }

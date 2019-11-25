@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button loginBtn = (Button)findViewById(R.id.LoginBtn);
-    EditText fillPassword = (EditText)findViewById(R.id.FillPassword);
-    EditText fillName = (EditText)findViewById(R.id.FillName);
+    Button loginBtn = findViewById(R.id.login_btn);
+    EditText fillPassword = findViewById(R.id.fill_password);
+    EditText fillName = findViewById(R.id.fill_name);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +24,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick (View v){
                 if(fillName.getText().toString().equals("admin") && fillPassword.getText().toString().equals("admin")) {
                     // launch activity
-                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
 
                 }else {
-                    Toast.makeText(getApplicationContext(), "Incorrect name or password", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Incorrect name or password", Toast.LENGTH_SHORT).show();
                 }
             }
             });

@@ -11,12 +11,9 @@ public class User extends BaseObject {
     private Date lastLogin;
     private String token;
 
-    public User(ResultSet rs) throws SQLException {
-        id = rs.getInt("id");
-        email = rs.getString("email");
-        password = rs.getString("password");
-        lastLogin = rs.getDate("last_login");
-        token = rs.getString("token");
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public int getId() {

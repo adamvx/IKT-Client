@@ -1,16 +1,16 @@
 package sk.stuba.fei.ikt.iktclient.model;
 
-public class Response extends BaseObject {
+public class ServerResponse extends BaseObject {
 
     private Integer code;
     private String message;
     private String token;
 
-    public Response(String token) {
+    public ServerResponse(String token) {
         this.token = token;
     }
 
-    public Response(ApiState error) {
+    public ServerResponse(ApiState error) {
         this.code = error.getCode();
         this.message = error.getMessage();
     }

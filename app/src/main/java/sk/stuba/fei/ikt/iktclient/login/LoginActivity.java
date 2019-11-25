@@ -5,9 +5,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sk.stuba.fei.ikt.iktclient.R;
+import sk.stuba.fei.ikt.iktclient.api.RetroClient;
 import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.dashboard.DashboardActivity;
-import sk.stuba.fei.ikt.iktclient.R;
+import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
+import sk.stuba.fei.ikt.iktclient.model.User;
 
 public class LoginActivity extends BaseActivity {
 
@@ -19,14 +25,23 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        loginBtn.setOnClickListener(v -> {
-            if(fillName.getText().toString().equals("admin") && fillPassword.getText().toString().equals("admin")) {
-                //TODO:  launch activity
-                Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                startActivity(DashboardActivity.getIntent(LoginActivity.this));
+        loginBtn.setOnClickListener(v -> login(fillName.getText().toString(), fillPassword.getText().toString()));
+    }
 
-            }else {
-                Toast.makeText(getApplicationContext(), "Incorrect name or password", Toast.LENGTH_SHORT).show();
+    private void login(String email, String password) {
+        RetroClient.getApiService().login(new User(email, password)).enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                if (response.body() != null && response.body().getToken() != null) {
+                    startActivity(DashboardActivity.getIntent(LoginActivity.this, response.body().getToken()));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Incorrect name or password", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                internalError();
             }
         });
     }

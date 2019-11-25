@@ -1,4 +1,4 @@
-package sk.stuba.fei.ikt.iktclient;
+package sk.stuba.fei.ikt.iktclient.base;
 
 import android.os.Bundle;
 
@@ -14,7 +14,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         bindViews();
     }
 
-    abstract void bindViews();
+    public abstract void bindViews();
 
-    abstract int layoutXml();
+    public abstract int layoutXml();
 }

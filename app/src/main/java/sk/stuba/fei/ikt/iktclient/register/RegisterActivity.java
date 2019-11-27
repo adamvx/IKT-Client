@@ -14,7 +14,6 @@ import sk.stuba.fei.ikt.iktclient.R;
 import sk.stuba.fei.ikt.iktclient.api.RetroClient;
 import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.dashboard.DashboardActivity;
-import sk.stuba.fei.ikt.iktclient.login.LoginActivity;
 import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
 import sk.stuba.fei.ikt.iktclient.model.User;

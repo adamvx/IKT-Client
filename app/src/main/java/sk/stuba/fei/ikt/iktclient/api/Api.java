@@ -29,4 +29,7 @@ public interface Api {
 
     @POST("create")
     Call<List<Note>> createNote(@Body Note note);
+
+    @POST("edit")
+    Call<List<Note>> editNote(@Body Note note);
 }

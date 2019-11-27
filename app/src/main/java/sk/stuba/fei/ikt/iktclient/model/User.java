@@ -1,7 +1,5 @@
 package sk.stuba.fei.ikt.iktclient.model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
 
 public class User extends BaseObject {

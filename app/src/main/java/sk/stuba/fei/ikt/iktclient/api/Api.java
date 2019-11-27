@@ -10,6 +10,9 @@ import sk.stuba.fei.ikt.iktclient.model.Note;
 import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
 import sk.stuba.fei.ikt.iktclient.model.User;
 
+/**
+ * This interface defines all network requests against server.
+ */
 public interface Api {
 
     @GET("check")

@@ -1,5 +1,8 @@
 package sk.stuba.fei.ikt.iktclient.model;
 
+/**
+ * Model of server response object
+ */
 public class ServerResponse extends BaseObject {
 
     private Integer code;

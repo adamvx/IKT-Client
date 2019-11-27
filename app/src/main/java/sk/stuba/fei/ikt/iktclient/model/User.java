@@ -2,6 +2,9 @@ package sk.stuba.fei.ikt.iktclient.model;
 
 import java.util.Date;
 
+/**
+ * Model of user object
+ */
 public class User extends BaseObject {
     private int id;
     private String email;

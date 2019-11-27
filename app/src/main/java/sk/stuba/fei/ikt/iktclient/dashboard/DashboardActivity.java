@@ -30,6 +30,13 @@ import sk.stuba.fei.ikt.iktclient.model.Note;
 import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
 import sk.stuba.fei.ikt.iktclient.welcome.WelcomeActivity;
 
+/**
+ * Screen that will load all notes for singed user.
+ *
+ * @see DashboardAdapter
+ * @see DashboardAdapter.DashboardHandler
+ */
+
 public class DashboardActivity extends BaseActivity implements DashboardAdapter.DashboardHandler {
 
     private static final int NOTE_REQUEST_CODE = 1;

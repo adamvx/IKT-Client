@@ -19,7 +19,12 @@ import java.util.List;
 import sk.stuba.fei.ikt.iktclient.R;
 import sk.stuba.fei.ikt.iktclient.model.Note;
 
-
+/**
+ * Adapter for Dashboard activity. Here is defended layout for note item. Filter functionality is also present
+ *
+ * @see DashboardActivity
+ * @see DashboardAdapter#getFilter()
+ */
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> implements Filterable {
 
     private DashboardHandler handler;

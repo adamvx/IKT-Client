@@ -18,6 +18,9 @@ import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
 import sk.stuba.fei.ikt.iktclient.model.User;
 
+/**
+ * Activity that handles user input and registration.
+ */
 public class RegisterActivity extends BaseActivity {
 
     private Button register;

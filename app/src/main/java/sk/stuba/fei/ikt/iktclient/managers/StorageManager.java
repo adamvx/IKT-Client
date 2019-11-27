@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.Nullable;
 
+/**
+ * Storage manager is responsible for saving user token and other properties in shared memory.
+ */
 public class StorageManager {
 
     private static final String TOKEN = "TOKEN";

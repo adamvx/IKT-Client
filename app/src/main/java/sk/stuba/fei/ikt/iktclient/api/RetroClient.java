@@ -3,6 +3,10 @@ package sk.stuba.fei.ikt.iktclient.api;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Retrofit client is used for all network traffic. It has defined base server url that it is
+ * connecting to. ROOT_URL should be changed based on ip address of server.
+ */
 public class RetroClient {
 
     private static final String ROOT_URL = "http://192.168.1.115:8000/api/";

@@ -1,5 +1,8 @@
 package sk.stuba.fei.ikt.iktclient.model;
 
+/**
+ * Model of note object
+ */
 public class Note extends BaseObject {
     private int id;
     private int userId;

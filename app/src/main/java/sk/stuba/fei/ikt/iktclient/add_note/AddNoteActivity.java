@@ -18,6 +18,11 @@ import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.model.Note;
 
+/**
+ * Activity for adding note. Layout is shared with EditNoteActivity
+ *
+ * @see sk.stuba.fei.ikt.iktclient.edit_note.EditNoteActivity
+ */
 public class AddNoteActivity extends BaseActivity {
 
     private EditText title, message;

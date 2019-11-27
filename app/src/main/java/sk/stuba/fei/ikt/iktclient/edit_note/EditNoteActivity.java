@@ -18,6 +18,11 @@ import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.model.Note;
 
+/**
+ * Activity for editing note. Layout is shared with AddNoteActivity
+ *
+ * @see sk.stuba.fei.ikt.iktclient.add_note.AddNoteActivity
+ */
 public class EditNoteActivity extends BaseActivity {
 
     private static final String ID_KEY = "ID_KEY";

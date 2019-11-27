@@ -6,6 +6,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Base activity should be used on all application activities in order of retaining designed architecture
+ */
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override

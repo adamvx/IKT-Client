@@ -12,6 +12,9 @@ import sk.stuba.fei.ikt.iktclient.login.LoginActivity;
 import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.register.RegisterActivity;
 
+/**
+ * Initial activity that will be presented to user is he not singed in.
+ */
 public class WelcomeActivity extends BaseActivity {
 
     private Button login, register;

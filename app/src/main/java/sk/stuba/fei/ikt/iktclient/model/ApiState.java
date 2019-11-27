@@ -1,5 +1,8 @@
 package sk.stuba.fei.ikt.iktclient.model;
 
+/**
+ * Collection of Api state messages and status codes.
+ */
 public enum ApiState {
 
     OK(0, "OK"),

@@ -20,6 +20,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract int layoutXml();
 
     public void internalError() {
-        Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Server offline!", Toast.LENGTH_SHORT).show();
     }
 }

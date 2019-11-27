@@ -21,6 +21,9 @@ public interface Api {
     @POST("login")
     Call<ServerResponse> login(@Body User user);
 
+    @POST("register")
+    Call<ServerResponse> register(@Body User user);
+
     @POST("delete")
     Call<List<Note>> deleteNote(@Body Note note);
 

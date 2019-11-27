@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,21 +23,22 @@ import sk.stuba.fei.ikt.iktclient.add_note.AddNoteActivity;
 import sk.stuba.fei.ikt.iktclient.api.RetroClient;
 import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.R;
+import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.model.Note;
 import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
+import sk.stuba.fei.ikt.iktclient.welcome.WelcomeActivity;
+
+import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
 
 public class DashboardActivity extends BaseActivity implements DashboardAdapter.DashboardHandler {
 
-    private static final String TOKEN_CODE = "TOKEN_CODE";
     private static final int ADD_NOTE_REQUEST_CODE = 1;
-    private String token;
 
     private RecyclerView rv;
     private DashboardAdapter dashboardAdapter;
 
-    public static Intent getIntent(Context context, String token) {
+    public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, DashboardActivity.class);
-        intent.putExtra(TOKEN_CODE, token);
         return intent;
     }
 
@@ -48,11 +50,16 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
 
-        if (id == R.id.action_add) {
-            startActivityForResult(AddNoteActivity.getIntent(this, token), ADD_NOTE_REQUEST_CODE);
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_add:
+                startActivityForResult(AddNoteActivity.getIntent(this), ADD_NOTE_REQUEST_CODE);
+                return true;
+            case R.id.action_sign_out:
+                StorageManager.getInstance().setToken(this, null);
+                startActivity(WelcomeActivity.getIntent(this));
+                finish();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -70,8 +77,6 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        token = getIntent().getStringExtra(TOKEN_CODE);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
 
@@ -80,6 +85,7 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
     }
 
     private void requestNotes() {
+        String token = StorageManager.getInstance().getToken(this);
         RetroClient.getApiService().getNotes(new ServerResponse(token)).enqueue(new Callback<List<Note>>() {
             @Override
             public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
@@ -90,7 +96,7 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
 
             @Override
             public void onFailure(Call<List<Note>> call, Throwable t) {
-                Log.e("TAG", "IC DO PICI");
+                internalError();
             }
         });
     }
@@ -105,6 +111,7 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
 
     @Override
     public void onNoteDeleted(Note note) {
+        String token = StorageManager.getInstance().getToken(this);
         note.setToken(token);
         RetroClient.getApiService().deleteNote(note).enqueue(new Callback<List<Note>>() {
             @Override

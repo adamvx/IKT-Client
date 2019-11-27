@@ -1,4 +1,4 @@
-package sk.stuba.fei.ikt.iktclient.login;
+package sk.stuba.fei.ikt.iktclient.register;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,18 +14,19 @@ import sk.stuba.fei.ikt.iktclient.R;
 import sk.stuba.fei.ikt.iktclient.api.RetroClient;
 import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.dashboard.DashboardActivity;
+import sk.stuba.fei.ikt.iktclient.login.LoginActivity;
 import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.model.ServerResponse;
 import sk.stuba.fei.ikt.iktclient.model.User;
 
-public class LoginActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity {
 
-    private Button login;
+    private Button register;
     private EditText password;
     private EditText email;
 
     public static Intent getIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
+        Intent intent = new Intent(context, RegisterActivity.class);
         return intent;
     }
 
@@ -33,7 +34,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        login.setOnClickListener(v -> login(email.getText().toString(), password.getText().toString()));
+        register.setOnClickListener(v -> login(email.getText().toString(), password.getText().toString()));
     }
 
     private void login(String email, String password) {
@@ -45,12 +46,12 @@ public class LoginActivity extends BaseActivity {
             this.password.setError("This field is required!");
             return;
         }
-        RetroClient.getApiService().login(new User(email, password)).enqueue(new Callback<ServerResponse>() {
+        RetroClient.getApiService().register(new User(email, password)).enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 if (response.body() != null && response.body().getToken() != null) {
-                    StorageManager.getInstance().setToken(LoginActivity.this, response.body().getToken());
-                    startActivity(DashboardActivity.getIntent(LoginActivity.this));
+                    StorageManager.getInstance().setToken(RegisterActivity.this, response.body().getToken());
+                    startActivity(DashboardActivity.getIntent(RegisterActivity.this));
                     finishAffinity();
                 } else {
                     Toast.makeText(getApplicationContext(), "Incorrect name or password", Toast.LENGTH_SHORT).show();
@@ -65,14 +66,15 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    public int layoutXml() {
-        return R.layout.activity_login;
-    }
-
-    @Override
     public void bindViews() {
-        login = findViewById(R.id.login);
+        register = findViewById(R.id.login);
         password = findViewById(R.id.password);
         email = findViewById(R.id.email);
     }
+
+    @Override
+    public int layoutXml() {
+        return R.layout.activity_register;
+    }
+
 }

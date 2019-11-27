@@ -17,18 +17,16 @@ import sk.stuba.fei.ikt.iktclient.R;
 import sk.stuba.fei.ikt.iktclient.api.RetroClient;
 import sk.stuba.fei.ikt.iktclient.base.BaseActivity;
 import sk.stuba.fei.ikt.iktclient.dashboard.DashboardActivity;
+import sk.stuba.fei.ikt.iktclient.managers.StorageManager;
 import sk.stuba.fei.ikt.iktclient.model.Note;
 
 public class AddNoteActivity extends BaseActivity {
 
-    private static final String TOKEN_CODE = "TOKEN_CODE";
     private EditText title, message;
     private Button save;
-    private String token;
 
-    public static Intent getIntent(Context context, String token) {
+    public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, AddNoteActivity.class);
-        intent.putExtra(TOKEN_CODE, token);
         return intent;
     }
 
@@ -36,8 +34,17 @@ public class AddNoteActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        token = getIntent().getStringExtra(TOKEN_CODE);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         save.setOnClickListener(v -> saveNote());
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        super.onBackPressed();
+        return super.onSupportNavigateUp();
     }
 
     private void saveNote() {
@@ -51,6 +58,8 @@ public class AddNoteActivity extends BaseActivity {
             message.setError("This field is required!");
             return;
         }
+
+        String token = StorageManager.getInstance().getToken(this);
         RetroClient.getApiService().createNote(new Note(heading, text, token)).enqueue(new Callback<List<Note>>() {
             @Override
             public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {

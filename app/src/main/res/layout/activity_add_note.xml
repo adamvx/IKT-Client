@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
+    android:background="#1A1B25"
     tools:context=".add_note.AddNoteActivity">
 
 
@@ -31,7 +32,7 @@
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="#3E62C4"
         android:paddingTop="8dp"
         android:text="SAVE"
         android:textColor="#fff" />

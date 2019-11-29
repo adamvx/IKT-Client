@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".welcome.WelcomeActivity">
+    tools:context=".welcome.WelcomeActivity"
+    android:background="#1A1B25">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,12 +17,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="192dp"
+            app:srcCompat="@drawable/logo" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="NotesApp"
             android:textAlignment="center"
-            android:textColor="#000"
+            android:textColor="#3E62C4"
             android:textSize="32sp" />
 
         <TextView
@@ -29,14 +36,15 @@
             android:layout_height="wrap_content"
             android:text="by"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="#1F3060" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Adam Vician, Milan Ponist &amp; Matej Vanek"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="#fff"/>
     </LinearLayout>
 
 
@@ -44,7 +52,7 @@
         android:id="@+id/login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="#1F3060"
         android:text="LOGIN"
         android:textColor="#fff"
         app:layout_constraintBottom_toTopOf="@+id/register"
@@ -56,6 +64,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="REGISTER"
+        android:textColor="#fff"
+        android:backgroundTint="#3E62C4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

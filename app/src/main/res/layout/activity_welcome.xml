@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="NotesApp"
             android:textAlignment="center"
-            android:textColor="#3E62C4"
+            android:textColor="@color/colorPrimary"
             android:textSize="32sp" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="by"
             android:textAlignment="center"
-            android:textColor="#1F3060" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         android:id="@+id/login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#1F3060"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:text="LOGIN"
         android:textColor="#fff"
         app:layout_constraintBottom_toTopOf="@+id/register"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:text="REGISTER"
         android:textColor="#fff"
-        android:backgroundTint="#3E62C4"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

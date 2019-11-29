@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Sign up!"
             android:textAlignment="center"
-            android:textColor="#3E62C4"
+            android:textColor="@color/colorPrimary"
             android:textSize="32sp" />
 
 
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#3E62C4"
+            android:backgroundTint="@color/colorPrimary"
             android:fontFamily="@font/montserrat"
             android:text="SIGN UP"
             android:textColor="#fff" />

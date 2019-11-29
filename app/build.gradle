@@ -7,8 +7,8 @@ android {
         applicationId "sk.stuba.fei.ikt.iktclient"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 2
-        versionName "BETA-1.1.0"
+        versionCode 3
+        versionName "BETA-1.2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

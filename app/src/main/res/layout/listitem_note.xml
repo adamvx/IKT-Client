@@ -6,11 +6,11 @@
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
-    android:background="#1A1B25"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/colorBackgroundLight"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -24,7 +24,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="TextViewasdasdasdasdasdasdasdasdasdas"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/more"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +33,7 @@
         <TextView
             android:id="@+id/text"
             android:layout_width="0dp"
+            android:textColor="#fff"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"

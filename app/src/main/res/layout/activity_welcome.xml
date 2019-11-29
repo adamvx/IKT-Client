@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:padding="8dp"
-    tools:context=".welcome.WelcomeActivity"
-    android:background="#1A1B25">
+    tools:context=".welcome.WelcomeActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -43,8 +43,8 @@
             android:layout_height="wrap_content"
             android:text="Adam Vician, Milan Ponist &amp; Matej Vanek"
             android:textAlignment="center"
-            android:textSize="18sp"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            android:textSize="18sp" />
     </LinearLayout>
 
 
@@ -63,9 +63,9 @@
         android:id="@+id/register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
         android:text="REGISTER"
         android:textColor="#fff"
-        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

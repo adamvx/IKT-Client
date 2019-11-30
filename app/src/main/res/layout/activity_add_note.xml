@@ -16,6 +16,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:textColor="#fff"
         android:ems="10"
+        android:maxLength="128"
         android:hint="Title of note"
         android:inputType="text" />
 
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
+        android:maxLength="128"
         android:textColor="#fff"
         android:gravity="start|top"
         android:hint="Enter your note here..."

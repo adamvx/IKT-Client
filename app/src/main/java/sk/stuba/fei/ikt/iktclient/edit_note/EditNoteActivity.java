@@ -66,13 +66,9 @@ public class EditNoteActivity extends BaseActivity {
 
     private void saveNote() {
         String heading = title.getText().toString();
-        if (heading.isEmpty()) {
-            title.setError("This field is required!");
-            return;
-        }
         String text = message.getText().toString();
-        if (text.isEmpty()) {
-            message.setError("This field is required!");
+
+        if (!isInputValid(heading, text)) {
             return;
         }
 
@@ -90,6 +86,26 @@ public class EditNoteActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private boolean isInputValid(String heading, String text) {
+        if (heading.isEmpty()) {
+            title.setError("This field is required!");
+            return false;
+        }
+        if (heading.length() > 128) {
+            title.setError("This field can't be longer than 128 characters");
+            return false;
+        }
+        if (text.isEmpty()) {
+            message.setError("This field is required!");
+            return false;
+        }
+        if (text.length() > 128) {
+            message.setError("This field can't be longer than 128 characters.");
+            return false;
+        }
+        return true;
     }
 
     @Override

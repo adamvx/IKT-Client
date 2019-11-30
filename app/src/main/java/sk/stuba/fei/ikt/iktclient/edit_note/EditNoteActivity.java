@@ -86,7 +86,7 @@ public class EditNoteActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Note>> call, Throwable t) {
-
+                internalError();
             }
         });
 

@@ -57,7 +57,6 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
         SearchView searchView = (SearchView) searchItem.getActionView();
         setupSearch(searchView);
 
-
         return true;
     }
 
@@ -128,6 +127,7 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
         super.onCreate(savedInstanceState);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
+        dashboardAdapter = new DashboardAdapter(DashboardActivity.this);
 
         requestNotes();
 
@@ -138,7 +138,6 @@ public class DashboardActivity extends BaseActivity implements DashboardAdapter.
         RetroClient.getApiService().getNotes(new ServerResponse(token)).enqueue(new Callback<List<Note>>() {
             @Override
             public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
-                dashboardAdapter = new DashboardAdapter(DashboardActivity.this);
                 dashboardAdapter.updateData(response.body());
                 rv.setAdapter(dashboardAdapter);
             }

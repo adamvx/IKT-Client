@@ -9,4 +9,4 @@ Semestral assignment from TS-IKT. Simple android application to displaying notes
 
 ## Install
 
-- copy .apk file to your device and install.
+- copy ikt_1.2.0.apk file located in root to your device and install.
